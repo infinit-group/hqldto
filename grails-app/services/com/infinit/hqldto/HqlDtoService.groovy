@@ -7,6 +7,7 @@ import org.codehaus.groovy.grails.commons.GrailsApplication
 import org.codehaus.groovy.grails.orm.hibernate.metaclass.ExecuteQueryPersistentMethod
 import org.hibernate.Session
 import org.hibernate.SessionFactory
+import org.hibernate.engine.SessionFactoryImplementor
 import org.hibernate.engine.query.HQLQueryPlan
 import org.hibernate.hql.QueryTranslator
 import org.hibernate.hql.antlr.SqlTokenTypes
@@ -15,7 +16,6 @@ import org.hibernate.hql.ast.tree.DotNode
 import org.hibernate.hql.ast.tree.QueryNode
 import org.hibernate.hql.ast.tree.SelectClause
 import org.hibernate.hql.ast.util.NodeTraverser
-import org.hibernate.impl.SessionFactoryImpl
 import org.hibernate.impl.SessionImpl
 
 class HqlDtoService {
@@ -71,7 +71,7 @@ class HqlDtoService {
 	private List<String> extractDtoProperties(String query) {
 		List<String> result = []
 		Session session = sessionFactory.getCurrentSession()
-		HQLQueryPlan hqlPlan = ((SessionFactoryImpl) sessionFactory).getQueryPlanCache().getHQLQueryPlan(query, false, ((SessionImpl) session).getEnabledFilters())
+		HQLQueryPlan hqlPlan = ((SessionFactoryImplementor) sessionFactory).getQueryPlanCache().getHQLQueryPlan(query, false, ((SessionImpl) session).getEnabledFilters())
 		QueryTranslator[] translators = hqlPlan.getTranslators()
 		QueryNode queryNode = (QueryNode) ((QueryTranslatorImpl) translators[0]).getSqlAST()
 		SelectClause selectClause = queryNode.selectClause
