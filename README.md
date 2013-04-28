@@ -49,7 +49,7 @@ The HqlDto can be used in you controllers to render JSON:
 Examples
 --------
 A minimalistic Grails project that uses the hqlDto plugin can be found here:
-https://github.com/infinit-group/hqldto
+https://github.com/infinit-group/hqldto-demo
 
 To clone this project type
 
