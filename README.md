@@ -32,7 +32,7 @@ In your controller or services just inject the HqlDtoService that is provided by
 	}
  
 The HqlDtoService.executeDtoQuery supports the same method signatures as the conventional Grails [HQL queries](http://grails.org/doc/latest/ref/Domain%20Classes/executeQuery.html).
-This means that same positional parameters, named parameters and meta parameters are supported.
+This means that the same positional parameters, named parameters and meta parameters are supported.
 
 The HqlDto can be used in you controllers to render JSON:
 
