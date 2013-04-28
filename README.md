@@ -34,6 +34,18 @@ In your controller or services just inject the HqlDtoService that is provided by
 The HqlDtoService.executeDtoQuery supports the same method signatures as the conventional Grails HQL queries:
 This means the query works the same way as <SomeGrailsDomainClass>.executeQuery(...).
 
+The HqlDto can be used in you controllers to render JSON:
+
+	class YourController {
+		...
+		YourService yourService
+		...
+		def getSomeDtos() {
+			List<HqlDtos> dtos = yourService.getSomeDtos()
+			rentder dtos as JSON
+		}
+	}
+
 Examples
 --------
 A minimalistic Grails project that uses the hqlDto plugin can be found here:
